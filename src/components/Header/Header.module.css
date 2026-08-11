@@ -1,0 +1,8 @@
+.heading {
+  margin: 3.2rem 0;
+
+  display: flex;
+  gap: 2.6rem;
+  align-items: center;
+  justify-content: center;
+}
