@@ -32,3 +32,12 @@ body {
 .container-fluid {
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  filter: brightness(80%);
+}
