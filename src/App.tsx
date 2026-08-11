@@ -1,11 +1,11 @@
-import { Logo } from './components/Logo/Logo'
-import { Header } from './components/Header/Header'
+import { Logo } from './components/Logo'
+import { Header } from './components/Header'
+import { Container } from './components/Container'
 
 import { TimerIcon } from 'lucide-react'
 
 import './styles/theme.css'
 import './styles/global.css'
-import { Container } from './components/Container/Container'
 
 export function App() {
   return (

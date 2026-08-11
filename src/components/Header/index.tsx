@@ -1,4 +1,4 @@
-import styles from './Header.module.css'
+import styles from './styles.module.css'
 
 type HeadProps = {
   children: React.ReactNode // components
