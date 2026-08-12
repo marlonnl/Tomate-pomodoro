@@ -7,8 +7,8 @@ export function Logo() {
     <header>
       <div className={styles.logoHeader}>
         <a href="#">
-          <CookingPotIcon size={'3.8rem'} />
-          <h1>Tomate</h1>
+          {/* <CookingPotIcon size={'3.8rem'} /> */}
+          <h1 title="Tomate">🍅</h1>
         </a>
         <p>a pomodoro app</p>
       </div>
