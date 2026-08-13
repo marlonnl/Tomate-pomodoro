@@ -4,6 +4,7 @@ import { Container } from './components/Container'
 import './styles/theme.css'
 import './styles/global.css'
 import { Menu } from './components/Menu'
+import { Counter } from './components/Counter'
 
 export function App() {
   return (
@@ -14,6 +15,10 @@ export function App() {
 
       <Container>
         <Menu />
+      </Container>
+
+      <Container>
+        <Counter />
       </Container>
     </div>
   )
