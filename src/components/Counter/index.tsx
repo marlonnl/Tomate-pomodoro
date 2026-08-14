@@ -16,7 +16,7 @@ export function Counter() {
           </div>
           <div className={styles.hoverControls}>
             <form className="form" action="">
-              <Input type="text" id="timerName" />
+              <Input type="text" id="timerName" placeholder="nome da tarefa" />
             </form>
             <div className={styles.buttonControls}>
               <a href="#">
