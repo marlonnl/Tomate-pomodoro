@@ -5,6 +5,8 @@ import './styles/theme.css'
 import './styles/global.css'
 import { Menu } from './components/Menu'
 import { Counter } from './components/Counter'
+import { Cycles } from './components/Cycles'
+import { Footer } from './components/Footer'
 
 export function App() {
   return (
@@ -19,6 +21,12 @@ export function App() {
 
       <Container>
         <Counter />
+
+        <Cycles />
+      </Container>
+
+      <Container>
+        <Footer />
       </Container>
     </div>
   )
