@@ -1,6 +1,7 @@
 import { Play, TimerOff } from 'lucide-react'
 import styles from './styles.module.css'
 import { Input } from '../Input'
+import { Button } from '../Button'
 
 export function Counter() {
   return (
@@ -19,13 +20,13 @@ export function Counter() {
               <Input type="text" id="timerName" placeholder="nome da tarefa" />
             </form>
             <div className={styles.buttonControls}>
-              <a href="#">
+              <Button>
                 <Play />
-              </a>
-              <a href="#">
+              </Button>
+              <Button>
                 <TimerOff />
                 {/* <Pause /> */}
-              </a>
+              </Button>
             </div>
           </div>
         </div>

@@ -1,0 +1,31 @@
+.button {
+  border: none;
+
+  padding: 0.8rem;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+.button:active {
+  filter: brightness(0.6);
+}
+
+/* Button colors ("color") */
+.default {
+  color: var(--text-over-primary);
+  background: var(--primary);
+}
+
+.stop {
+  background: var(--error);
+  color: var(--text-over-error);
+}
