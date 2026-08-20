@@ -1,0 +1,15 @@
+import type { TaskModel } from './TaskModel'
+
+export type TaskStateModel = {
+  tasks: TaskModel[]
+  secondsRemaining: number
+  formattedSecondsReamining: string
+  activeTask: TaskModel | null
+  currentCycle: number // 1-8
+
+  config: {
+    work: number
+    shortBreak: number
+    longBreak: number
+  }
+}
