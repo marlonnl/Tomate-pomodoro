@@ -2,8 +2,12 @@ import { Play, TimerOff } from 'lucide-react'
 import styles from './styles.module.css'
 import { Input } from '../Input'
 import { Button } from '../Button'
+import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
+import { Form } from '../Form'
 
 export function Counter() {
+  const { state } = useTaskContext()
+
   return (
     <div className={styles.wrapper}>
       <div
@@ -12,22 +16,13 @@ export function Counter() {
       >
         <div className={styles.progressRingInner}>
           <div className={styles.timerDisplay}>
-            <span className={styles.timer}>21:19</span>
+            <span className={styles.timer}>
+              {state.formattedSecondsReamining}
+            </span>
             <span className={styles.name}>FOCO</span>
           </div>
           <div className={styles.hoverControls}>
-            <form className="form" action="">
-              <Input type="text" id="timerName" placeholder="nome da tarefa" />
-            </form>
-            <div className={styles.buttonControls}>
-              <Button>
-                <Play />
-              </Button>
-              <Button>
-                <TimerOff />
-                {/* <Pause /> */}
-              </Button>
-            </div>
+            <Form />
           </div>
         </div>
       </div>

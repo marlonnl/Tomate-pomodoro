@@ -1,0 +1,13 @@
+.buttonControls {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.buttonControls a {
+  display: inline-flex;
+  color: var(--text-over-primary);
+  background: var(--primary);
+
+  padding: 0.8rem 0.8rem;
+  border-radius: 50%;
+}

@@ -97,8 +97,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-  margin-bottom: 1.6rem;
+  gap: 1.6rem;
 }
 
 .hoverControls input {
@@ -113,18 +112,4 @@
 .progressRing:hover .hoverControls {
   opacity: 1;
   visibility: visible;
-}
-
-.buttonControls {
-  display: flex;
-  gap: 0.8rem;
-}
-
-.buttonControls a {
-  display: inline-flex;
-  color: var(--text-over-primary);
-  background: var(--primary);
-
-  padding: 0.8rem 0.8rem;
-  border-radius: 50%;
 }
