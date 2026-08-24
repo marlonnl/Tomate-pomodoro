@@ -3,16 +3,17 @@ import { useRef } from 'react'
 import { Button } from '../Button'
 import { Input } from '../Input'
 
-import { Play, TimerOff } from 'lucide-react'
-import styles from './styles.module.css'
 import type { TaskModel } from '../../models/TaskModel'
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
 import { getNextCycle } from '../../utils/getNextCycle'
 import { getNextCycleType } from '../../utils/getNextCycleType'
-import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes'
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions'
+
+import { Play, TimerOff } from 'lucide-react'
+import styles from './styles.module.css'
 
 export function Form() {
-  const { state, setState } = useTaskContext()
+  const { state, dispatch } = useTaskContext()
   const taskNameInput = useRef<HTMLInputElement>(null)
 
   const nextCycle = getNextCycle(state.currentCycle)
@@ -21,8 +22,6 @@ export function Form() {
   function handleCreateNewTask(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    // if (taskNameInput.current === null) return
-    // const taskName = taskNameInput.current.value.trim()
     const taskNameInputValue = taskNameInput.current?.value.trim()
 
     const taskName: string = taskNameInputValue
@@ -39,35 +38,11 @@ export function Form() {
       type: nextCycleType,
     }
 
-    const secondsRemaining = newTask.duration * 60
-
-    setState(prevState => {
-      return {
-        ...prevState,
-        activeTask: newTask,
-        currentCycle: nextCycle,
-        secondsRemaining,
-        formattedSecondsReamining: formatSecondsToMinutes(secondsRemaining),
-        tasks: [...prevState.tasks, newTask],
-      }
-    })
+    dispatch({ type: TaskActionTypes.START_TASK, payload: newTask })
   }
 
   function handleInterruptTask() {
-    setState(prevState => {
-      return {
-        ...prevState,
-        activeTask: null,
-        secondsRemaining: 0,
-        formattedSecondsReamining: '00:00',
-        tasks: prevState.tasks.map(task => {
-          if (prevState.activeTask && prevState.activeTask.id === task.id) {
-            return { ...task, interruptDate: Date.now() }
-          }
-          return task
-        }),
-      }
-    })
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK })
   }
 
   return (
