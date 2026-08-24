@@ -1,9 +1,7 @@
-import { Play, TimerOff } from 'lucide-react'
-import styles from './styles.module.css'
-import { Input } from '../Input'
-import { Button } from '../Button'
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
 import { Form } from '../Form'
+
+import styles from './styles.module.css'
 
 export function Counter() {
   const { state } = useTaskContext()
