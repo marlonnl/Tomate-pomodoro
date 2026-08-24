@@ -53,6 +53,23 @@ export function Form() {
     })
   }
 
+  function handleInterruptTask() {
+    setState(prevState => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsReamining: '00:00',
+        tasks: prevState.tasks.map(task => {
+          if (prevState.activeTask && prevState.activeTask.id === task.id) {
+            return { ...task, interruptDate: Date.now() }
+          }
+          return task
+        }),
+      }
+    })
+  }
+
   return (
     <form onSubmit={e => handleCreateNewTask(e)} className="form" action="">
       <Input
@@ -60,15 +77,31 @@ export function Form() {
         id="taskName"
         placeholder="nome da tarefa"
         ref={taskNameInput}
+        disabled={!!state.activeTask}
       />
       <div className={styles.buttonControls}>
-        <Button>
-          <Play />
-        </Button>
-        <Button>
-          <TimerOff />
-          {/* <Pause /> */}
-        </Button>
+        {!state.activeTask ? (
+          <Button
+            type="submit"
+            key="submitButton"
+            aria-label="Iniciar nova tarefa"
+            title="Iniciar nova tarefa"
+          >
+            <Play />
+          </Button>
+        ) : (
+          <Button
+            type="button"
+            key="interruptButton"
+            aria-label="Interromper tarefa atual"
+            title="Interromper tarefa atual"
+            color="stop"
+            onClick={handleInterruptTask}
+          >
+            <TimerOff />
+            {/* <Pause /> */}
+          </Button>
+        )}
       </div>
     </form>
   )
