@@ -1,4 +1,6 @@
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
+import { cycleDescription } from '../../utils/cycleDescription'
+import { getNextCycleType } from '../../utils/getNextCycleType'
 import { Form } from '../Form'
 
 import styles from './styles.module.css'
@@ -17,7 +19,11 @@ export function Counter() {
             <span className={styles.timer}>
               {state.formattedSecondsReamining}
             </span>
-            <span className={styles.name}>FOCO</span>
+            <span className={styles.name}>
+              {state.currentCycle > 0
+                ? cycleDescription[getNextCycleType(state.currentCycle)]
+                : '---'}
+            </span>
           </div>
           <div className={styles.hoverControls}>
             <Form />

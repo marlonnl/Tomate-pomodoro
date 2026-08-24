@@ -1,4 +1,5 @@
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
+import { cycleDescription } from '../../utils/cycleDescription'
 import { getNextCycle } from '../../utils/getNextCycle'
 import { getNextCycleType } from '../../utils/getNextCycleType'
 
@@ -7,11 +8,11 @@ import styles from './styles.module.css'
 export function Cycles() {
   const { state } = useTaskContext()
 
-  const cycleDescription = {
-    work: 'foco',
-    shortBreak: 'descanso curto',
-    longBreak: 'descanso longo',
-  }
+  // const cycleDescription = {
+  //   work: 'foco',
+  //   shortBreak: 'descanso curto',
+  //   longBreak: 'descanso longo',
+  // }
 
   const cycles = Array.from({ length: state.currentCycle })
 

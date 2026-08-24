@@ -73,7 +73,7 @@
 .name {
   font-size: 1.6rem;
   color: var(--gray-300);
-  letter-spacing: 0.8rem;
+  letter-spacing: 0.2rem;
 }
 
 .hoverControls {
