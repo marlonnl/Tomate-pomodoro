@@ -2,6 +2,7 @@ import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
 import { cycleDescription } from '../../utils/cycleDescription'
 import { getNextCycle } from '../../utils/getNextCycle'
 import { getNextCycleType } from '../../utils/getNextCycleType'
+import { CycleStatus } from '../CycleStatus'
 
 import styles from './styles.module.css'
 
@@ -33,6 +34,9 @@ export function Cycles() {
             ></span>
           )
         })}
+        <div>
+          <CycleStatus />
+        </div>
       </div>
     </div>
   )
