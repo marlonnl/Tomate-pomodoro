@@ -1,18 +1,28 @@
+import { useEffect } from 'react'
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
 import { cycleDescription } from '../../utils/cycleDescription'
 import { getNextCycleType } from '../../utils/getNextCycleType'
 import { Form } from '../Form'
 
 import styles from './styles.module.css'
+import { getRelativeSeconds } from '../../utils/relativeTime'
 
 export function Counter() {
   const { state } = useTaskContext()
+
+  const totalSeconds = state.activeTask?.duration * 60
+  const relativeSeconds =
+    100 - getRelativeSeconds(state.secondsRemaining, totalSeconds)
 
   return (
     <div className={styles.wrapper}>
       <div
         className={styles.progressRing}
-        style={{ '--progress': '15' } as React.CSSProperties}
+        style={
+          {
+            '--progress': `${relativeSeconds}`,
+          } as React.CSSProperties
+        }
       >
         <div className={styles.progressRingInner}>
           <div className={styles.timerDisplay}>
