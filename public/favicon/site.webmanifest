@@ -1,0 +1,21 @@
+{
+  "name": "Tomate Pomodoro",
+  "short_name": "Tomate",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0da170",
+  "background_color": "#0a0f1a",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "minimal-ui"],
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Gerencie seus ciclos de Pomodoro com o Tomate.",
+  "id": "/"
+}
