@@ -11,6 +11,8 @@ import { TaskActionTypes } from '../../contexts/TaskContext/taskActions'
 
 import { Play, TimerOff } from 'lucide-react'
 import styles from './styles.module.css'
+import { toast } from 'react-toastify'
+import { toastifyWrapper } from '../../adapters/toastifyWrapper'
 
 export function Form() {
   const { state, dispatch } = useTaskContext()
@@ -39,10 +41,12 @@ export function Form() {
     }
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask })
+    toastifyWrapper.success('Tarefa iniciada!')
   }
 
   function handleInterruptTask() {
     dispatch({ type: TaskActionTypes.INTERRUPT_TASK })
+    toastifyWrapper.error('Tarefa interrompida.')
   }
 
   return (

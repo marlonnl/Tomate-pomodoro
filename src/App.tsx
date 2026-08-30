@@ -1,31 +1,18 @@
-import { Bounce, ToastContainer } from 'react-toastify'
-
 import { Home } from './pages/Home'
 
 import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
 
 import './styles/theme.css'
 import './styles/global.css'
+import { ToastifyContainer } from './components/ToastifyContainer'
 
 export function App() {
   return (
     <div className="container-fluid">
       <TaskContextProvider>
-        <Home />
-
-        <ToastContainer
-          position="top-center"
-          autoClose={10000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={true}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-          transition={Bounce}
-        />
+        <ToastifyContainer>
+          <Home />
+        </ToastifyContainer>
       </TaskContextProvider>
     </div>
   )
