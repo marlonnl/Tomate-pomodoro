@@ -13,10 +13,16 @@
   justify-content: center;
 }
 
+@property --progress {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
 .progressRing {
   --size: 260px;
   --thickness: 16px;
-  --progress: 40;
+  --progress: 0;
 
   width: var(--size);
   height: var(--size);
@@ -31,7 +37,7 @@
   align-items: center;
   justify-content: center;
 
-  transition: background 0.3s linear;
+  transition: --progress 0.2s linear;
 }
 
 .progressRingInner {
