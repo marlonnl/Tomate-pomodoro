@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 
 import styles from './styles.module.css'
+import { RouterLink } from '../RouterLink'
 
 type ThemeType = 'dark' | 'light'
 
@@ -46,15 +47,23 @@ export function Menu() {
 
   return (
     <nav className={styles.navButtons}>
-      <a href="#" title="Página inicial" aria-label="Ir para página incial">
+      <RouterLink
+        href="/"
+        title="Página inicial"
+        aria-label="Ir para página incial"
+      >
         <HomeIcon />
-      </a>
-      <a href="#" title="Histórico" aria-label="Ver histórico">
+      </RouterLink>
+      <RouterLink href="/history/" title="Histórico" aria-label="Ver histórico">
         <TimerResetIcon />
-      </a>
-      <a href="#" title="Configurações" aria-label="Configurar app">
+      </RouterLink>
+      <RouterLink
+        href="/settings/"
+        title="Configurações"
+        aria-label="Configurar app"
+      >
         <Settings2Icon />
-      </a>
+      </RouterLink>
       <a
         href="#"
         title={`Mudar para tema ${ThemeChange[theme]['name']}`}
