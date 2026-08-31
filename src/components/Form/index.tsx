@@ -10,13 +10,14 @@ import { getNextCycleType } from '../../utils/getNextCycleType'
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions'
 
 import { Play, TimerOff } from 'lucide-react'
-import styles from './styles.module.css'
-import { toast } from 'react-toastify'
 import { toastifyWrapper } from '../../adapters/toastifyWrapper'
+
+import styles from './styles.module.css'
 
 export function Form() {
   const { state, dispatch } = useTaskContext()
   const taskNameInput = useRef<HTMLInputElement>(null)
+  const lastTaskName = state.tasks[state.tasks.length - 1]?.name || ''
 
   const nextCycle = getNextCycle(state.currentCycle)
   const nextCycleType = getNextCycleType(nextCycle)
@@ -57,6 +58,7 @@ export function Form() {
         placeholder="nome da tarefa"
         ref={taskNameInput}
         disabled={!!state.activeTask}
+        defaultValue={lastTaskName}
       />
       <div className={styles.buttonControls}>
         {!state.activeTask ? (
