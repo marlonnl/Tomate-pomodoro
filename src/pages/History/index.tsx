@@ -12,11 +12,15 @@ import { getTaskStatus } from '../../utils/getTaskStatus'
 import { cycleDescription } from '../../utils/cycleDescription'
 import { sortTasks } from '../../utils/sortTasks'
 import type { SortTasksOptions } from '../../utils/sortTasks'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { toast } from 'react-toastify'
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions'
+import { toastifyWrapper } from '../../adapters/toastifyWrapper'
 
 export function History() {
   const { state, dispatch } = useTaskContext()
+  const [confirmClearHistory, setConfirmClearHistory] = useState(false)
+
   const hasTasks = state.tasks.length > 0
   const [sortTasksOptions, setSortTasksOptions] = useState<SortTasksOptions>(
     () => {
@@ -29,15 +33,33 @@ export function History() {
   )
 
   useEffect(() => {
-    setSortTasksOptions(prevState => ({
-      ...prevState,
-      tasks: sortTasks({
+    if (!confirmClearHistory) return
+
+    setConfirmClearHistory(false)
+
+    dispatch({ type: TaskActionTypes.RESET_STATE })
+  }, [confirmClearHistory, dispatch])
+
+  const sortedTasks = useMemo(
+    () =>
+      sortTasks({
         tasks: state.tasks,
-        direction: prevState.direction,
-        field: prevState.field,
+        field: sortTasksOptions.field,
+        direction: sortTasksOptions.direction,
       }),
-    }))
-  }, [state.tasks])
+    [state.tasks, sortTasksOptions.field, sortTasksOptions.direction],
+  )
+
+  // useEffect(() => {
+  //   setSortTasksOptions(prevState => ({
+  //     ...prevState,
+  //     tasks: sortTasks({
+  //       tasks: state.tasks,
+  //       direction: prevState.direction,
+  //       field: prevState.field,
+  //     }),
+  //   }))
+  // }, [state.tasks])
 
   function handleSortTasks({ field }: Pick<SortTasksOptions, 'field'>) {
     const newDirection = sortTasksOptions.direction === 'desc' ? 'asc' : 'desc'
@@ -53,9 +75,14 @@ export function History() {
     })
   }
 
-  function handleEraseHistory() {
-    if (!confirm('Tem certeza que quer apagar o histórico?')) return
-    dispatch({ type: TaskActionTypes.RESET_STATE })
+  function handleClearHistory() {
+    toastifyWrapper.dismiss()
+    toastifyWrapper.confirm(
+      'Term certeza que deseja apagar o seu histórico de tarefas?',
+      confirmation => {
+        setConfirmClearHistory(confirmation)
+      },
+    )
   }
 
   return (
@@ -69,7 +96,7 @@ export function History() {
                 color="stop"
                 aria-label="Apagar histórico"
                 title="Apagar histórico"
-                onClick={handleEraseHistory}
+                onClick={handleClearHistory}
               >
                 <TrashIcon />
               </Button>
@@ -107,7 +134,8 @@ export function History() {
               </thead>
 
               <tbody>
-                {sortTasksOptions.tasks.map(task => {
+                {sortedTasks.map(task => {
+                  // {sortTasksOptions.tasks.map(task => {
                   return (
                     <tr key={task.id}>
                       <td>{task.name}</td>
