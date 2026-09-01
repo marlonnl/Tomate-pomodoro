@@ -1,3 +1,5 @@
+import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
+
 import { TrashIcon } from 'lucide-react'
 import { Button } from '../../components/Button'
 import { Container } from '../../components/Container'
@@ -5,8 +7,13 @@ import { Header } from '../../components/Header'
 import { MainTemplate } from '../../templates/MainTemplate'
 
 import styles from './styles.module.css'
+import { formatDate } from '../../utils/formatDate'
+import { getTaskStatus } from '../../utils/getTaskStatus'
+import { cycleDescription } from '../../utils/cycleDescription'
 
 export function History() {
+  const { state } = useTaskContext()
+
   return (
     <MainTemplate>
       <Container>
@@ -37,14 +44,14 @@ export function History() {
             </thead>
 
             <tbody>
-              {Array.from({ length: 20 }).map((_, index) => {
+              {state.tasks.map(task => {
                 return (
-                  <tr key={index}>
-                    <td>Estudar</td>
-                    <td>25 min</td>
-                    <td>31/08/2026 18:47</td>
-                    <td>Completa</td>
-                    <td>Foco</td>
+                  <tr key={task.id}>
+                    <td>{task.name}</td>
+                    <td>{task.duration} min</td>
+                    <td>{formatDate(task.startDate)}</td>
+                    <td>{getTaskStatus(task, state.activeTask)}</td>
+                    <td>{cycleDescription[task.type]}</td>
                   </tr>
                 )
               })}
