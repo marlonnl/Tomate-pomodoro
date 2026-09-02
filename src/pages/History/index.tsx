@@ -15,6 +15,7 @@ import type { SortTasksOptions } from '../../utils/sortTasks'
 import { useEffect, useMemo, useState } from 'react'
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions'
 import { toastifyWrapper } from '../../adapters/toastifyWrapper'
+import { APPNAME } from '../../utils/appName'
 
 export function History() {
   const { state, dispatch } = useTaskContext()
@@ -40,6 +41,8 @@ export function History() {
   }, [confirmClearHistory, dispatch])
 
   useEffect(() => {
+    document.title = `Histórico - ${APPNAME}`
+
     return () => {
       toastifyWrapper.dismiss()
     }

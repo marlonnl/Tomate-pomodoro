@@ -1,6 +1,6 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
-import { FileCogIcon, SaveIcon } from 'lucide-react'
+import { SaveIcon } from 'lucide-react'
 import { Button } from '../../components/Button'
 import { Container } from '../../components/Container'
 import { Header } from '../../components/Header'
@@ -11,9 +11,14 @@ import styles from './styles.module.css'
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
 import { toastifyWrapper } from '../../adapters/toastifyWrapper'
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions'
+import { APPNAME } from '../../utils/appName'
 
 export function Settings() {
   const { state, dispatch } = useTaskContext()
+
+  useEffect(() => {
+    document.title = `Configurações - ${APPNAME}`
+  }, [])
 
   const workTimeInput = useRef<HTMLInputElement>(null)
   const shortBreakTimeInput = useRef<HTMLInputElement>(null)

@@ -1,9 +1,16 @@
+import { useEffect } from 'react'
 import { Container } from '../../components/Container'
 import { GenericHtml } from '../../components/GenericHtml'
 import { Header } from '../../components/Header'
 import { MainTemplate } from '../../templates/MainTemplate'
+import { APPNAME } from '../../utils/appName'
+import { Link } from 'react-router'
 
 export function About() {
+  useEffect(() => {
+    document.title = `A técnica pomodoro - ${APPNAME}`
+  }, [])
+
   return (
     <div>
       <MainTemplate>
@@ -52,7 +59,7 @@ export function About() {
             <p>
               Você pode configurar o tempo de foco, descanso curto e descanso
               longo do jeito que quiser! Basta acessar a{' '}
-              <a href="/settings">página de configurações</a> e ajustar os
+              <Link to="/settings">página de configurações</Link> e ajustar os
               minutos como preferir.
             </p>
 
@@ -98,7 +105,7 @@ export function About() {
             <h3>📊 Histórico automático</h3>
             <p>
               Todas as suas tarefas e ciclos concluídos ficam salvos no{' '}
-              <a href="/history">histórico</a>, com status de completas ou
+              <Link to="/history">histórico</Link>, com status de completas ou
               interrompidas. Assim, você consegue acompanhar sua evolução ao
               longo do tempo.
             </p>
@@ -113,7 +120,7 @@ export function About() {
 
             <p>
               <strong>Pronto pra focar?</strong> Bora lá{' '}
-              <a href="/">voltar para a página inicial</a> e iniciar seus
+              <Link to="/">voltar para a página inicial</Link> e iniciar seus
               Pomodoros! 🍅🚀
             </p>
 

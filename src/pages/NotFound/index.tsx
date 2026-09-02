@@ -1,9 +1,16 @@
+import { useEffect } from 'react'
+
 import { Container } from '../../components/Container'
 import { GenericHtml } from '../../components/GenericHtml'
 import { Header } from '../../components/Header'
 import { MainTemplate } from '../../templates/MainTemplate'
+import { APPNAME } from '../../utils/appName'
 
 export function NotFound() {
+  useEffect(() => {
+    document.title = `ERRO 404 - ${APPNAME}`
+  }, [])
+
   return (
     <MainTemplate>
       <Container>
