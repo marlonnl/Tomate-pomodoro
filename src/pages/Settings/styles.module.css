@@ -1,0 +1,34 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.formRow {
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formRow label {
+  margin: 3.2rem 0 0.8rem 0;
+}
+
+.formRow input {
+  text-align: center;
+}
+
+.formButtonRow {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  max-width: 100%;
+}
+
+.formButtonRow button {
+  margin-top: 2.4rem;
+  border-radius: 0.8rem;
+}
