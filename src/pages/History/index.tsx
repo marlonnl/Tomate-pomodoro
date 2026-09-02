@@ -13,7 +13,6 @@ import { cycleDescription } from '../../utils/cycleDescription'
 import { sortTasks } from '../../utils/sortTasks'
 import type { SortTasksOptions } from '../../utils/sortTasks'
 import { useEffect, useMemo, useState } from 'react'
-import { toast } from 'react-toastify'
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions'
 import { toastifyWrapper } from '../../adapters/toastifyWrapper'
 
@@ -39,6 +38,12 @@ export function History() {
 
     dispatch({ type: TaskActionTypes.RESET_STATE })
   }, [confirmClearHistory, dispatch])
+
+  useEffect(() => {
+    return () => {
+      toastifyWrapper.dismiss()
+    }
+  }, [])
 
   const sortedTasks = useMemo(
     () =>
