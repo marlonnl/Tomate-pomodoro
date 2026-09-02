@@ -7,6 +7,7 @@ export enum TaskActionTypes {
   RESET_STATE = 'RESET_STATE',
   COUNTDOWN = 'COUNTDOWN',
   COMPLETE_TASK = 'COMPLETE',
+  CHANGE_SETTINGS = 'CHANGE_SETTINGS',
 }
 
 export type TaskActionModel =
@@ -27,4 +28,8 @@ export type TaskActionModel =
     }
   | {
       type: TaskActionTypes.COMPLETE_TASK
+    }
+  | {
+      type: TaskActionTypes.CHANGE_SETTINGS
+      payload: TaskStateModel['config']
     }
