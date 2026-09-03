@@ -24,6 +24,7 @@ export function Form() {
 
   function handleCreateNewTask(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault()
+    toastifyWrapper.dismiss()
 
     const taskNameInputValue = taskNameInput.current?.value.trim()
 
@@ -42,7 +43,7 @@ export function Form() {
     }
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask })
-    toastifyWrapper.success('Tarefa iniciada!')
+    toastifyWrapper.success(`Tarefa ${taskName} iniciada!`)
   }
 
   function handleInterruptTask() {
