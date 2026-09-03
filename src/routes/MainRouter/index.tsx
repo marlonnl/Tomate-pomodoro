@@ -6,6 +6,7 @@ import { NotFound } from '../../pages/NotFound'
 import { useEffect } from 'react'
 import { History } from '../../pages/History'
 import { Settings } from '../../pages/Settings'
+import { Project } from '../../pages/Project'
 
 function scrollTop() {
   const { pathname } = useLocation()
@@ -25,6 +26,7 @@ export function MainRouter() {
         <Route path="/history" element={<History />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/about-pomodoro" element={<About />} />
+        <Route path="/about-project" element={<Project />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

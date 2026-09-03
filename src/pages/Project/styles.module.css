@@ -1,0 +1,13 @@
+.aboutText {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.aboutText p {
+  text-align: justify;
+}
+
+.aboutText a {
+  color: var(--link-color);
+}
