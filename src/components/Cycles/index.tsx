@@ -34,9 +34,9 @@ export function Cycles() {
             ></span>
           )
         })}
-        <div>
-          <CycleStatus />
-        </div>
+      </div>
+      <div>
+        <CycleStatus />
       </div>
     </div>
   )

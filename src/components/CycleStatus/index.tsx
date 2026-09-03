@@ -21,9 +21,9 @@ export function CycleStatus() {
   }
 
   return (
-    <>
+    <div style={{ fontSize: '1.4rem' }}>
       {!!state.activeTask && statusActive[state.activeTask.type]}
       {!state.activeTask && statusInactive[nextCycleType]}
-    </>
+    </div>
   )
 }
