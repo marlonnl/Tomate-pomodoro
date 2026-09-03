@@ -8,7 +8,7 @@ import { History } from '../../pages/History'
 import { Settings } from '../../pages/Settings'
 import { Project } from '../../pages/Project'
 
-function scrollTop() {
+function ScrollTop() {
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -30,6 +30,7 @@ export function MainRouter() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ScrollTop />
     </BrowserRouter>
   )
 }

@@ -48,6 +48,7 @@ export function Form() {
 
   function handleInterruptTask() {
     dispatch({ type: TaskActionTypes.INTERRUPT_TASK })
+    toastifyWrapper.dismiss()
     toastifyWrapper.error('Tarefa interrompida.')
   }
 

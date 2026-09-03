@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext'
 import { cycleDescription } from '../../utils/cycleDescription'
 import { getNextCycleType } from '../../utils/getNextCycleType'
