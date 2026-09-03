@@ -9,7 +9,7 @@ import { getRelativeSeconds } from '../../utils/relativeTime'
 export function Counter() {
   const { state } = useTaskContext()
 
-  const totalSeconds = state.activeTask?.duration * 60
+  const totalSeconds = (state.activeTask?.duration ?? 0) * 60
   const relativeSeconds =
     100 - getRelativeSeconds(state.secondsRemaining, totalSeconds)
 
