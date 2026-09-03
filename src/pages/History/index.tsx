@@ -19,7 +19,6 @@ import { APPNAME } from '../../utils/appName'
 
 export function History() {
   const { state, dispatch } = useTaskContext()
-  const [confirmClearHistory, setConfirmClearHistory] = useState(false)
 
   const hasTasks = state.tasks.length > 0
   const [sortTasksOptions, setSortTasksOptions] = useState<SortTasksOptions>(
@@ -31,14 +30,6 @@ export function History() {
       }
     },
   )
-
-  useEffect(() => {
-    if (!confirmClearHistory) return
-
-    setConfirmClearHistory(false)
-
-    dispatch({ type: TaskActionTypes.RESET_STATE })
-  }, [confirmClearHistory, dispatch])
 
   useEffect(() => {
     document.title = `Histórico - ${APPNAME}`
@@ -57,17 +48,6 @@ export function History() {
       }),
     [state.tasks, sortTasksOptions.field, sortTasksOptions.direction],
   )
-
-  // useEffect(() => {
-  //   setSortTasksOptions(prevState => ({
-  //     ...prevState,
-  //     tasks: sortTasks({
-  //       tasks: state.tasks,
-  //       direction: prevState.direction,
-  //       field: prevState.field,
-  //     }),
-  //   }))
-  // }, [state.tasks])
 
   function handleSortTasks({ field }: Pick<SortTasksOptions, 'field'>) {
     const newDirection = sortTasksOptions.direction === 'desc' ? 'asc' : 'desc'
@@ -88,7 +68,8 @@ export function History() {
     toastifyWrapper.confirm(
       'Term certeza que deseja apagar o seu histórico de tarefas?',
       confirmation => {
-        setConfirmClearHistory(confirmation)
+        if (!confirmation) return
+        dispatch({ type: TaskActionTypes.RESET_STATE })
       },
     )
   }
